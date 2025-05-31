@@ -15,25 +15,9 @@ main:
 
 	movz x10, 0x94, lsl 16
 	movk x10, 0x4A58, lsl 00
-	
-	
-	mov x12, 1
-	mov x13, 1
-	mov x14, 1
-	mov x15, 1
-	
-	B fondo
+	mov x12, 5
 
-
-cd12:
-
-	sub x12, x12, 1
-	
-	movz x10, 0xEE, lsl 16
-	movk x10, 0x2E26, lsl 00
-
-
-fondo:
+Fondo:
 	mov x2, 54       // Y Size
 loop1:
 	mov x1, SCREEN_WIDTH         // X Size
@@ -44,47 +28,20 @@ loop0:
 	cbnz x1,loop0  // Si no terminó la fila, salto
 	sub x2,x2,1	   // Decrementar contador Y
 	cbnz x2,loop1  // Si no es la última fila, salto
-	// Ejemplo de uso de gpios
-	mov x9, GPIO_BASE
-	
-	cbnz x13, cd13
-	cbnz x14, cd14
-	cbnz x15, cd15
 	cbnz x12, cd12
 
+cd12:
 
-cd13:
+	sub x12, x12, 1
+	movz x13, 0x12, lsl 16
+	add x10,x10,x13
+	sub x10,x10,0x060c
+	cbnz x12, Fondo
+	//---------------- edificio1 ------------------------------------
 
-	cd13:
-	sub x13, x13, 1
+	bl rectnegro
 	
-	movz x10, 0x9C, lsl 16
-	movk x10, 0x444C, lsl 00
-	B fondo
 	
-cd14:
-
-	cd14:
-	sub x14, x14, 1
-	
-	movz x10, 0xCA, lsl 16
-	movk x10, 0x3834, lsl 00
-	B fondo
-	
-cd15:
-
-	cd15:
-	sub x15, x15, 1
-	
-	movz x10, 0xDC, lsl 16
-	movk x10, 0x3228, lsl 00
-	B fondo
-	
-
-	//---------------- edificios ------------------------------------
-
-	
-
 	// Ejemplo de uso de gpios
 	mov x9, GPIO_BASE
 
