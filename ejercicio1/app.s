@@ -11,7 +11,7 @@
 main:
 	// x0 contiene la direccion base del framebuffer
  	mov x20, x0	// Guarda la dirección base del framebuffer en x20
-	//---------------- Fondo ------------------------------------
+	//---------------- CODE HERE ------------------------------------
 
 	movz x10, 0x94, lsl 16
 	movk x10, 0x4A58, lsl 00
@@ -37,10 +37,51 @@ cd12:
 	add x10,x10,x13
 	sub x10,x10,0x060c
 	cbnz x12, Fondo
-	//---------------- edificio1 ------------------------------------
 
-	bl rectnegro
-	
+	// edificio 1
+	mov x0, 0        // x
+	mov x1, 200        // y
+	mov x2, 150        // ancho
+	mov x3, 280        // alto
+	movz x14, 0x78, lsl 16
+	movk x14, 0x2828, lsl 00
+	bl edificio
+
+	// edificio 2
+	mov x0, 150
+	mov x1, 220
+	mov x2, 100
+	mov x3, 300
+	movz x14, 0x68, lsl 16
+	movk x14, 0x2828, lsl 00
+	bl edificio
+
+	// edificio 3
+	mov x0, 250
+	mov x1, 270
+	mov x2, 210
+	mov x3, 220
+	movz x14, 0x58, lsl 16
+	movk x14, 0x2828, lsl 00
+	bl edificio
+
+	//edificio 4
+	mov x0, 460
+	mov x1, 220
+	mov x2, 70
+	mov x3, 300
+	movz x14, 0x48, lsl 16
+	movk x14, 0x2828, lsl 00
+	bl edificio
+
+    //edificio 5
+	mov x0, 530
+	mov x1, 120
+	mov x2, 110
+	mov x3, 370
+	movz x14, 0x38, lsl 16
+	movk x14, 0x2828, lsl 00
+	bl edificio
 	
 	// Ejemplo de uso de gpios
 	mov x9, GPIO_BASE
