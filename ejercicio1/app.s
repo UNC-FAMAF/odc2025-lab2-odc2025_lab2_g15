@@ -11,7 +11,7 @@
 main:
 	// x0 contiene la direccion base del framebuffer
  	mov x20, x0	// Guarda la dirección base del framebuffer en x20
-	//---------------- CODE HERE ------------------------------------
+	//---------------- Fondo ------------------------------------
 
 	movz x10, 0x94, lsl 16
 	movk x10, 0x4A58, lsl 00
@@ -38,7 +38,8 @@ cd12:
 	sub x10,x10,0x060c
 	cbnz x12, Fondo
 
-	// edificio 1
+	//---------------- edificios ------------------------------------
+	// edificio 1 
 	mov x0, 0        // x
 	mov x1, 200        // y
 	mov x2, 150        // ancho
@@ -46,6 +47,12 @@ cd12:
 	movz x14, 0x78, lsl 16
 	movk x14, 0x2828, lsl 00
 	bl edificio
+	mov x0, 0        	// x
+	mov x1, 250        // y
+	movz w14, 0xF0 , lsl 16		
+	movk w14, 0xBE46, lsl 00	// color de las luces  		
+	mov x4,4					// cantidad de lineas (luces)
+	bl lineas
 
 	// edificio 2
 	mov x0, 150
@@ -55,6 +62,12 @@ cd12:
 	movz x14, 0x68, lsl 16
 	movk x14, 0x2828, lsl 00
 	bl edificio
+	mov x0, 150      	// x
+	mov x1, 270     // y
+	movz w14, 0xF0 , lsl 16		
+	movk w14, 0xBE46, lsl 00	// color de las luces  		
+	mov x4,3					// cantidad de lineas (luces)
+	bl lineas
 
 	// edificio 3
 	mov x0, 250
@@ -64,6 +77,12 @@ cd12:
 	movz x14, 0x58, lsl 16
 	movk x14, 0x2828, lsl 00
 	bl edificio
+	mov x0, 250       	// x
+	mov x1, 310      // y
+	movz w14, 0xF0 , lsl 16		
+	movk w14, 0xBE46, lsl 00	// color de las luces  		
+	mov x4,3					// cantidad de lineas (luces)
+	bl lineas
 
 	//edificio 4
 	mov x0, 460
@@ -73,6 +92,12 @@ cd12:
 	movz x14, 0x48, lsl 16
 	movk x14, 0x2828, lsl 00
 	bl edificio
+	mov x0, 460       	// x
+	mov x1, 270    // y
+	movz w14, 0xF0 , lsl 16		
+	movk w14, 0xBE46, lsl 00	// color de las luces  		
+	mov x4,3				// cantidad de lineas (luces)
+	bl lineas
 
     //edificio 5
 	mov x0, 530
@@ -82,6 +107,7 @@ cd12:
 	movz x14, 0x38, lsl 16
 	movk x14, 0x2828, lsl 00
 	bl edificio
+
 	
 	// Ejemplo de uso de gpios
 	mov x9, GPIO_BASE
