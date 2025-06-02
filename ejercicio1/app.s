@@ -17,6 +17,7 @@ main:
 	movk x10, 0x4A58, lsl 00
 	mov x12, 5
 
+
 Fondo:
 	mov x2, 54       // Y Size
 loop1:
@@ -39,7 +40,8 @@ cd12:
 	cbnz x12, Fondo
 
 	//---------------- edificios ------------------------------------
-	// edificio 1 
+	// edificio 1
+	
 	mov x0, 0        // x
 	mov x1, 200        // y
 	mov x2, 150        // ancho
@@ -107,22 +109,21 @@ cd12:
 	movz x14, 0x38, lsl 16
 	movk x14, 0x2828, lsl 00
 	bl edificio
-
+ 
 	//Letras
 	mov x3, 50 // altura de las letras
 	mov x0, 550       	// x
 	mov x1, 130    // y
 	mov x2, 30
 	movz w14, 0xFf , lsl 16		
-	movk w14, 0x00ff, lsl 00	 		
+	movk w14, 0x00ff, lsl 00 		
 	mov x4,3				
 	
 	bl letras
 	mov x0, 600       	// x
 	mov x1, 130    // y
 	mov x2, 30
-	movz w14, 0xFf , lsl 16		
-	movk w14, 0x00ff, lsl 00	 		
+	 		
 	mov x4,4				
 	bl letras
 	// COCO TFT2
@@ -130,8 +131,7 @@ cd12:
 	mov x0, 600       	// x
 	mov x1, 130    // y
 	mov x2, 30
-	movz w14, 0xFf , lsl 16		
-	movk w14, 0x00ff, lsl 00	 		
+	 		
 	mov x4,1				
 
 	//O
@@ -150,18 +150,16 @@ cd12:
 	mov x1, 230    // y
 	mov x2, 16
 	mov x3, 40
-	movz w14, 0x38 , lsl 16		
-	movk w14, 0x2828, lsl 00			
+			
 	mov x4,1
 	bl letras
 
 	//C
 	mov x0, 557       	// x
 	mov x1, 330    // y
-	mov x2, 30
+	mov x2, 42
 	mov x3, 30
-	movz w14, 0x38 , lsl 16		
-	movk w14, 0x2828, lsl 00			
+			
 	mov x4,1
 	bl letras
 
@@ -170,8 +168,7 @@ cd12:
 	mov x1, 135    // y
 	mov x2, 30
 	mov x3, 15
-	movz w14, 0x38 , lsl 16		
-	movk w14, 0x2828, lsl 00	 		
+	 		
 	mov x4,1
 	bl letras
 	//2.1
@@ -179,8 +176,7 @@ cd12:
 	mov x1, 160    // y
 	mov x2, 30
 	mov x3, 15
-	movz w14, 0x38 , lsl 16		
-	movk w14, 0x2828, lsl 00			
+			
 	mov x4,1
 	bl letras
 
@@ -189,8 +185,7 @@ cd12:
 	mov x1, 230    // y
 	mov x2, 16
 	mov x3, 40
-	movz w14, 0x38 , lsl 16		
-	movk w14, 0x2828, lsl 00	 		
+	 		
 	mov x4,1
 	bl letras
 
@@ -199,8 +194,7 @@ cd12:
 	mov x1, 330    // y
 	mov x2, 30
 	mov x3, 15
-	movz w14, 0x38 , lsl 16		
-	movk w14, 0x2828, lsl 00			
+			
 	mov x4,1
 	bl letras
 	//2.3
@@ -208,8 +202,7 @@ cd12:
 	mov x1, 350    // y
 	mov x2, 30
 	mov x3, 15
-	movz w14, 0x38 , lsl 16		
-	movk w14, 0x2828, lsl 00			
+			
 	mov x4,1
 	bl letras
 
@@ -218,8 +211,7 @@ cd12:
 	mov x1, 420    // y
 	mov x2, 30
 	mov x3, 15
-	movz w14, 0x38 , lsl 16		
-	movk w14, 0x2828, lsl 00	  		
+	  		
 	mov x4,1
 	bl letras
 	//5.1
@@ -227,8 +219,7 @@ cd12:
 	mov x1, 440    // y
 	mov x2, 30
 	mov x3, 15
-	movz w14, 0x38 , lsl 16		
-	movk w14, 0x2828, lsl 00	s  		
+
 	mov x4,1
 	bl letras
 
