@@ -108,6 +108,138 @@ cd12:
 	movk x14, 0x2828, lsl 00
 	bl edificio
 
+	//Letras
+	mov x3, 50 // altura de las letras
+	mov x0, 550       	// x
+	mov x1, 130    // y
+	mov x2, 30
+	movz w14, 0xFf , lsl 16		
+	movk w14, 0x00ff, lsl 00	 		
+	mov x4,3				
+	
+	bl letras
+	mov x0, 600       	// x
+	mov x1, 130    // y
+	mov x2, 30
+	movz w14, 0xFf , lsl 16		
+	movk w14, 0x00ff, lsl 00	 		
+	mov x4,4				
+	bl letras
+	// COCO TFT2
+
+	mov x0, 600       	// x
+	mov x1, 130    // y
+	mov x2, 30
+	movz w14, 0xFf , lsl 16		
+	movk w14, 0x00ff, lsl 00	 		
+	mov x4,1				
+
+	//O
+	bl letras
+	mov x0, 557       	// x
+	mov x1, 137    // y
+	mov x2, 16
+	mov x3, 34
+	movz w14, 0x38 , lsl 16		
+	movk w14, 0x2828, lsl 00	  		
+	mov x4,1				
+
+	//D
+	bl letras
+	mov x0, 562       	// x
+	mov x1, 230    // y
+	mov x2, 16
+	mov x3, 40
+	movz w14, 0x38 , lsl 16		
+	movk w14, 0x2828, lsl 00			
+	mov x4,1
+	bl letras
+
+	//C
+	mov x0, 557       	// x
+	mov x1, 330    // y
+	mov x2, 30
+	mov x3, 30
+	movz w14, 0x38 , lsl 16		
+	movk w14, 0x2828, lsl 00			
+	mov x4,1
+	bl letras
+
+	// 2
+	mov x0, 590       	// x
+	mov x1, 135    // y
+	mov x2, 30
+	mov x3, 15
+	movz w14, 0x38 , lsl 16		
+	movk w14, 0x2828, lsl 00	 		
+	mov x4,1
+	bl letras
+	//2.1
+	mov x0, 610       	// x
+	mov x1, 160    // y
+	mov x2, 30
+	mov x3, 15
+	movz w14, 0x38 , lsl 16		
+	movk w14, 0x2828, lsl 00			
+	mov x4,1
+	bl letras
+
+	// 0
+	mov x0, 607       	// x
+	mov x1, 230    // y
+	mov x2, 16
+	mov x3, 40
+	movz w14, 0x38 , lsl 16		
+	movk w14, 0x2828, lsl 00	 		
+	mov x4,1
+	bl letras
+
+	// 2.2
+	mov x0, 590       	// x
+	mov x1, 330    // y
+	mov x2, 30
+	mov x3, 15
+	movz w14, 0x38 , lsl 16		
+	movk w14, 0x2828, lsl 00			
+	mov x4,1
+	bl letras
+	//2.3
+	mov x0, 610       	// x
+	mov x1, 350    // y
+	mov x2, 30
+	mov x3, 15
+	movz w14, 0x38 , lsl 16		
+	movk w14, 0x2828, lsl 00			
+	mov x4,1
+	bl letras
+
+	//5
+	mov x0, 610       	// x
+	mov x1, 420    // y
+	mov x2, 30
+	mov x3, 15
+	movz w14, 0x38 , lsl 16		
+	movk w14, 0x2828, lsl 00	  		
+	mov x4,1
+	bl letras
+	//5.1
+	mov x0, 590       	// x
+	mov x1, 440    // y
+	mov x2, 30
+	mov x3, 15
+	movz w14, 0x38 , lsl 16		
+	movk w14, 0x2828, lsl 00	s  		
+	mov x4,1
+	bl letras
+
+
+
+
+
+
+
+	
+
 	
 	// Ejemplo de uso de gpios
 	mov x9, GPIO_BASE
