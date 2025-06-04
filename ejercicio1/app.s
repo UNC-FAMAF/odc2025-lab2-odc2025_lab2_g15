@@ -39,6 +39,9 @@ cd12:
 	sub x10,x10,0x060c
 	cbnz x12, Fondo
 
+
+	bl sol
+
 	//---------------- edificios ------------------------------------
 	// edificio 1
 	
@@ -109,6 +112,8 @@ cd12:
 	movz x14, 0x38, lsl 16
 	movk x14, 0x2828, lsl 00
 	bl edificio
+
+	//---------------- letras ------------------------------------
  
 	//Letras
 	mov x3, 50 // altura de las letras
@@ -234,10 +239,7 @@ cd12:
 	mov x1 , 64
 	mov x0, 50
 	bl pajarito
-
-
-	//---------------------------------------------------------------
-	// Infinite Loop
+	
 
 InfLoop:
 	b InfLoop
