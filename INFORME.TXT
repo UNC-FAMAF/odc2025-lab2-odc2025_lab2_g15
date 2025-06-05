@@ -1,0 +1,15 @@
+Nombre y apellido 
+Integrante 1: santiago lopez seco, 45407626
+Integrante 2: joaquin ortiz longar, 45801671
+Integrante 3: lucas ariel tejerina,  41735698
+Integrante 4: tomas morales pallarol, 45210561
+
+
+Descripción ejercicio 1: 
+con la implementacion de multiples archivos junto al app.s  
+logramos formar la imagen de una ciudad en el atardecer
+
+Descripción ejercicio 2:
+
+
+Justificación instrucciones ARMv8:
