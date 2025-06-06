@@ -10,6 +10,9 @@ con la implementacion de multiples archivos junto al app.s
 logramos formar la imagen de una ciudad en el atardecer
 
 Descripción ejercicio 2:
-
+En la tarde de una cuidad se realiza una carrera de zepelins.
 
 Justificación instrucciones ARMv8:
+_ sub sp, sp, #8. Reserva memoria para en el stack pointer (sp), para almcenar 8bytes.
+_ stur lr, [sp]. Guarda el valor del link register en la dirección apuntada por sp.
+_ stp x0, x1, [sp, #-16]!. Reserva memoria en el stack para almacenar 2 registros de 8bytes.
