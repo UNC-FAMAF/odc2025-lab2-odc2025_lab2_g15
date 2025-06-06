@@ -1,59 +1,83 @@
 .globl sol
 
 sol:
+    sub sp, sp, #8
+    stur lr, [sp]
+    stp x0, x1, [sp, #-16]!
+    stp x2, x3, [sp, #-16]!
+    stp x4, x5, [sp, #-16]!
+    stp x6, x7, [sp, #-16]!
+    stp x8, x9, [sp, #-16]!
+    stp x10, x11, [sp, #-16]!
+    stp x12, x13, [sp, #-16]!
     // Parámetros del círculo
-    mov     x0, 340          // Centro X
-    mov     x1, 270          // Centro Y
-    mov     x2, 40           // Radio
-	mov 	x16, 640
-    
-    movz    x14, 0xFF, lsl 16	// Color 
-    movk    x14, 0xB906, lsl 0
+    mov x0, #300          // Centro X
+    mov x1, #310          // Centro Y
+    mov x2, #40           // Radio
+	mov x3, #640
 
-    mov     x13, 0	// Inicializar Y = 0 (fila)
+    // Desplazamiento
+    add x0, x0, x25 // en x.
+    sub x1, x1, x26 // en y.
+    
+    ldr x4, =0xFFB906
+
+    mov x13, #0	// Inicializar Y = 0 (fila) x15
 
 loop_y:
-    cmp     x13, 480
-    b.ge    end
+    cmp x13, #480   //Controlador del ancho de la figura.
+    b.ge end        // Si x13 >= #480 entonces salta a la etiqueta end
 
-    mov     x12, 0 // Inicializar X = 0 (columna)
+    mov x12, #0 // Actualizamos el contador del alto de la figura.
 
 loop_x:
-    cmp     x12, 640
-    b.ge    next_row
+    cmp x12, #640   //Controlamos que no nos excedemos el alto e la figura.
+    b.ge next_row
 
-    // Calcular (dx = x - cx), (dy = y - cy)
-    sub     x5, x12, x0      // dx = x - cx
-    sub     x6, x13, x1      // dy = y - cy
 
-    // Calcular dx*dx y dy*dy
-    smull   x7, w5, w5       // dx²
-    smull   x8, w6, w6       // dy²
-
-    // Comparar con radio²
-    add     x9, x7, x8       // dx² + dy²
-    mul     x10, x2, x2      // radio²
-
-    cmp     x9, x10
-    b.gt    skip_pixel       // Si fuera del círculo, salta
-
-    // Calcular dirección en framebuffer
-    // addr = framebuffer + ((y * 640 + x) * 4)
-    mul     x15, x13, x16   // y * 640
-    add     x15, x15, x12    // + x
-    lsl     x15, x15, 2      // * 4 (bytes por pixel)
-    add     x15, x20, x15    // dirección absoluta
+    sub x5, x12, x0      
+    sub x6, x13, x1      
 
     
-    str     w14, [x15]		// Escribir color
+    smull x7, w5, w5       
+    smull x8, w6, w6       
+
+    
+    add x9, x7, x8      
+    mul x10, x2, x2     
+
+    cmp x9, x10
+    b.gt skip_pixel       
+
+    // Calcular dirección en framebuffer 
+
+    mul x11, x13, x3  
+    add x11, x11, x12    
+    lsl x11, x11, 2      // bytes por pixel
+    add x11, x20, x11   // dirección absoluta
+
+    
+    str w4, [x11]		// Escribir color
+
 
 skip_pixel:
-    add     x12, x12, 1
-    b       loop_x
+    add x12, x12, #1
+    b loop_x
 
 next_row:
-    add     x13, x13, 1
-    b       loop_y
+    add x13, x13, #1
+    b loop_y
 
 end:
+
+    ldp x12, x13, [sp], #16
+    ldp x10, x11, [sp], #16
+    ldp x8, x9, [sp], #16
+    ldp x6, x7, [sp], #16
+    ldp x4, x5, [sp], #16
+    ldp x2, x3, [sp], #16
+    ldp x0, x1, [sp], #16
+
+    ldur lr, [sp]
+    add sp, sp, #8
     ret

@@ -12,6 +12,11 @@ main:
 	// x0 contiene la direccion base del framebuffer
  	mov x20, x0	// Guarda la dirección base del framebuffer en x20
 	mov x25, #0
+	mov x26, #0
+	ldr x27, =SCREEN_HEIGH 
+	mov x28, #0
+	mov x29, #0
+
 	
 	mov x0, x20
 	bl Fondo
@@ -24,7 +29,13 @@ main:
 	// Infinite Loop
 	
 InfLoop:
+
+	add x29, x29, #2
+	add x28, x28, #1
+	cmp x27, x25
+	b.eq .reset_xy
 	add x25, x25, #1
+	add x26, x26, #1
 
 	mov x0, x20
 	bl Fondo
@@ -33,7 +44,9 @@ InfLoop:
 	mov x0, x20
 	bl dibujar
 	mov x0, x20
-	
 
 	b InfLoop
-
+.reset_xy:
+	mov x25, #0
+	mov x26, #0
+	b InfLoop

@@ -26,7 +26,7 @@ Fondo:
     sub x4, x4, #1
     movz x5, 0x12, lsl #16
     add x3, x3, x5
-    sub x3, x3, #0x060c
+    sub x3, x3, #0x060C
     cbnz x4, .repetir_fondo
 
     ldp x4, x5, [sp], #16
@@ -34,6 +34,8 @@ Fondo:
     ldp x0, x1, [sp], #16
     ldur lr, [sp]
     add sp, sp, #8
+
+    
     
     ret
 

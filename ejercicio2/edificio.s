@@ -17,12 +17,16 @@
 // x0: framebuffer.
 
 edificio:
+    sub sp, sp, #8
+    stur lr, [sp]
     stp x30, x29, [sp, #-16]!       // guardar direcciones de retorno.
     stp x28, x27, [sp, #-16]!
     stp x21, x22, [sp, #-16]!
+    stp x18, x19, [sp, #-16]!
     
     mov x22, x2
     mov x28, x3
+    mov x19, x4
 
 
     //dibujamos el marco de los edificios.
@@ -40,6 +44,15 @@ edificio:
     sub x4, x4, #8
 
     bl cuadrado    
+    // efecto sobre la pared
+
+    mov w1, w13
+    
+    lsr x18, x4, #3
+    add x2, x2, x18
+    sub x4, x4, x18
+    bl cuadrado
+
 
     // dibujamos las luces.
     mov x5, x11     // grosor de la luz.
@@ -62,14 +75,17 @@ endi:
     sub x3, x29, x11
     sub x27, x29, x3
     mov x5, x27          // Guardamos la cantidad de lineas a colorear de las puertas.
-    add x2, x22, #51
+    add x2, x22, #60
     mov w1, w12
     
     bl cuadrado
+    
  
-
+    ldp x18, x19, [sp], #16
     ldp x21, x22, [sp], #16
     ldp x28, x27, [sp], #16
     ldp x30, x29, [sp], #16        // restaurar dirección de retorno.
+    ldur lr, [sp]
+    add sp, sp, #8
     ret
 

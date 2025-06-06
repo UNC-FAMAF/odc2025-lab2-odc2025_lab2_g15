@@ -87,8 +87,11 @@ ovalo_zepelin:
     lsr x14, x5, #1 //Calculamos la mitad de las filas de pintar.
     mov x15, #0     // Contador de filas pintadas.
     lsl x18, x10, #1
+    
 
+    
 .inferior:
+    sub w1, w1, 0x0400
     mov x16, x18
     mov x17, x13
 .fila2:
