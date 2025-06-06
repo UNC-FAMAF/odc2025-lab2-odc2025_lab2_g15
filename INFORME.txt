@@ -16,3 +16,28 @@ Justificación instrucciones ARMv8:
 _ sub sp, sp, #8. Reserva memoria para en el stack pointer (sp), para almcenar 8bytes.
 _ stur lr, [sp]. Guarda el valor del link register en la dirección apuntada por sp.
 _ stp x0, x1, [sp, #-16]!. Reserva memoria en el stack para almacenar 2 registros de 8bytes.
+_ mov x0, #a. Movemos el literal a en el registro x0.
+_ add x0, x2, x25. Realizamos la suma de los contenidos x2 con x25 y lo almacenamos en x0.
+_ sub x1, x1, x26. Calculamos la resta entre los contenidos de x1 con x26 y lo almacenamos en x1.
+_ ldr x4, =0xFFB906. Cargamos el valor inmediato 0xFFB906 en x4.
+_ etiqueta:. Los utilizamos para definir instacias logicas, que nos permitan repetir ciertas acciones.
+_ cmp x13, #a. Realiza la comparacion entre el contenido del registro x13 y un literal, realizar esta comparacion actualiza las flags.
+_ b.ge end. Salta a la etiqueta end si y solo si, estan activalas las flags correspondientes al mayor o igual.
+_ smull x7, w5, w5. Multiplica el contenido de los registros w5 con w5 (32 bits) y lo almacena en x7 los 8bytes (64 bits) de la operacion.
+_ mul x10, x2, x2. Multiplicamos el contenido de los registros x2 con x2 y los almacenamos en x10.
+_ b.gt etiqueta. Salta a etiqueta si y solo si, estan activas las flags correspondientes a que un registro es mayor que otro.
+_ lsl x11, x11, #a. Multiplicamos el contenido del registro x11 con 2 elevado a la a.
+_ str w4, [x11]. Almacemos el contenido de 32 bits en x11.
+_ b etiqueta. Salta a etiqueta sin necesidad de que alguna flag en particular este activada.
+_ ldp x0, x1, [sp], #16. Recuperamos el valor de los registros x0 y x1 almacenados en el stack, luego el stack pointer se desplaza 16bytes para liberar la memoria resevada.
+_ ldur lr, [sp]. Cagamos en el link register (lr) el valor almacenado en la direccion sp.
+_ add sp, sp, #8. Recuperamos el stack pointer.
+_ .globl etiqueta. Sirve para poder saltar a etiqueta desde cualquier archivo .s.
+_ .equ SCREEN_WIDTH, #640. Defenimos la constante SCREEN_WIDTH que representar el valor de #640.
+_ lsr x11, x4, #a. Dividimos el contenido del registro x4 entre 2 elevado a la a, y lo almacenamos en x11.
+_ subs x16, x16, #a. Calculamos la resta del registro x16 con el literal #a, en donde almacenamos el resultado en x16 y a su vez actualiza las flags.
+_ bne etiqueta. Salta a etiqueta si y solo si, estan activadas las flags correspondientes a que dos cosas no son iguales.
+_ bl etiqueta. Nos permite salta a etiqueta que se encuentra en otro archivo .s, actualizando el valor de lr.
+_ cbnz x4, etiqueta. Salta a etiqueta si x4 no es cero.
+_ movz x5, 0x12, lsl #a. Cargamos en el registro x5 0x12 desplazado 'a' bits a la izquierda y el resto lo llena con ceros.
+_ blt luzp. Salta a la etiqueta luzp si el resultado de la comparación anterior fue "menor que".
